@@ -1,0 +1,26 @@
+<div class="card card-1 w-100 mt-3">
+    <div id="question_text_{{ i.pk }}">
+        <div class="card-body main-card">
+            <p class="card-text"><a href="{% url 'article_details_url' i.article.pk %}">Article: {{ i.article }}  </a></p>
+            <hr>
+            <p>Comment: {{ i.text }}</p>
+            <hr>
+            <p class="card-text">Created by: {{ i.author }}</p>
+            <hr>
+            <p class="card-text">Created at: {{ i.created_at }}</p>
+            <hr>
+            <p class="card-text">Updated at: {{ i.updated_at }}</p>
+            <a href="" class="btn btn-primary"><i class="fas fa-info"></i></a>
+
+            <a href="{% url 'comment_edit_url' i.pk %}" class="btn btn-success"><i
+                    class="fas fa-pen"></i></a>
+            <a href="{% url 'comment_delete_url' i.pk %}" class="btn btn-danger"><i
+                    class="fas fa-eraser"></i></a>
+        </div>
+    </div>
+
+</div>
+
+<div class="plus-button">
+    <a href="{% url 'comment_create_url' %}" class="text-decoration-none">+</a>
+</div>

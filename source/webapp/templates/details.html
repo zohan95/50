@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="container card-1 mt-5">
+        <h3>{{ object.title }}</h3>
+        <p>{{ object.author }}</p>
+        <hr>
+        <p>{{ object.text }}</p>
+        <hr>
+        <p>{{ object.created_at }}</p>
+        <hr>
+        <p>{{ object.updated_at }}</p>
+    </div>
+    {% if comments %}
+
+        <div class="container mt-3">
+            <h3>Комментарии:</h3>
+            {% for i in comments %}
+                    {% include 'partial/comments.html' %}
+            {% endfor %}
+        </div>
+    {% endif %}
+{% endblock %}

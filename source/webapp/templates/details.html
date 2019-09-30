@@ -11,6 +11,9 @@
         <hr>
         <p>{{ object.updated_at }}</p>
     </div>
+
+    <form action="{% url 'comment_create_url' %}"
+
     {% if comments %}
 
         <div class="container mt-3">

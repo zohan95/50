@@ -16,7 +16,7 @@ class ArticleDetails(DetailView):
     def get_context_data(self, **kwargs):
         article = kwargs.get('object')
         context = super().get_context_data(**kwargs)
-        context['comments'] = Comment.objects.filter(article=article)
+        context['comments'] = Comment.objects.filter(article=article).order_by('-created_at')
         print('kwargs:', kwargs)
         print(context['comments'])
         return context
@@ -49,11 +49,13 @@ class ArticleDelete(DeleteView):
 class CommentsView(ListView):
     template_name = 'comments.html'
     model = Comment
+    ordering = ['-created_at']
 
 
 class CommentEdit(UpdateView):
     template_name = 'article_form.html'
     model = Comment
+    fields = ['article', 'text', 'author']
     success_url = reverse_lazy('comments_url')
 
 
@@ -64,6 +66,7 @@ class CommentDelete(DeleteView):
 
 
 class CommentCreate(CreateView):
+
     template_name = 'article_form.html'
     model = Comment
     fields = ['article', 'text', 'author']

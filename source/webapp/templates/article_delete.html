@@ -6,7 +6,7 @@
             {% csrf_token %}
             <h3 class="mb-3">Удалить запись: {{ object }}?</h3>
             <button type="submit" class="btn btn-danger">Удалить</button>
-            <a href="{% url 'main_url' %}" class="btn btn-primary">Отмена</a>
+            <a href="{% url 'comments_url' %}" class="btn btn-primary">Отмена</a>
         </form>
     </div>
 {% endblock %}

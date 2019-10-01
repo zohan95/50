@@ -3,11 +3,11 @@
   "model": "webapp.article",
   "pk": 1,
   "fields": {
-    "title": "huearticle",
+    "title": "Article1",
     "text": "asd",
     "author": "sadawdsa",
     "created_at": "2019-09-27T13:38:42.052Z",
-    "updated_at": "2019-09-27T13:38:42.052Z",
+    "updated_at": "2019-09-30T05:25:28.628Z",
     "category": 1
   }
 },
@@ -15,11 +15,11 @@
   "model": "webapp.article",
   "pk": 3,
   "fields": {
-    "title": "huegolovok",
+    "title": "article2",
     "text": "sdf",
     "author": "Unknown",
     "created_at": "2019-09-27T14:19:11.145Z",
-    "updated_at": "2019-09-27T14:19:11.145Z",
+    "updated_at": "2019-09-30T05:25:35.871Z",
     "category": null
   }
 },
@@ -43,6 +43,28 @@
     "author": "\u0410\u043d\u043e\u043d\u0438\u043c",
     "created_at": "2019-09-30T05:21:34.791Z",
     "updated_at": "2019-09-30T05:21:34.792Z"
+  }
+},
+{
+  "model": "webapp.comment",
+  "pk": 4,
+  "fields": {
+    "article": 1,
+    "text": "article3",
+    "author": "\u0410\u043d\u043e\u043d\u0438\u043c",
+    "created_at": "2019-09-30T09:16:15.286Z",
+    "updated_at": "2019-09-30T09:16:23.535Z"
+  }
+},
+{
+  "model": "webapp.comment",
+  "pk": 5,
+  "fields": {
+    "article": 3,
+    "text": "asd",
+    "author": "\u0410\u043d\u043e\u043d\u0438\u043c",
+    "created_at": "2019-10-01T03:58:15.612Z",
+    "updated_at": "2019-10-01T03:58:15.612Z"
   }
 },
 {

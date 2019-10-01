@@ -2,6 +2,8 @@ from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views.generic import *
 from .models import *
+from .forms import CommentForm
+from django.shortcuts import redirect
 
 
 class ArticleList(ListView):
@@ -17,13 +19,8 @@ class ArticleDetails(DetailView):
         article = kwargs.get('object')
         context = super().get_context_data(**kwargs)
         context['comments'] = Comment.objects.filter(article=article).order_by('-created_at')
-        print('kwargs:', kwargs)
-        print(context['comments'])
+        context['form'] = CommentForm
         return context
-
-
-
-
 
 
 class ArticleCreate(CreateView):
@@ -60,14 +57,25 @@ class CommentEdit(UpdateView):
 
 
 class CommentDelete(DeleteView):
-    template_name = 'article_form.html'
+    template_name = 'article_delete.html'
     model = Comment
     success_url = reverse_lazy('comments_url')
 
 
 class CommentCreate(CreateView):
-
     template_name = 'article_form.html'
     model = Comment
     fields = ['article', 'text', 'author']
     success_url = reverse_lazy('comments_url')
+
+
+class CommentAdd(View):
+    def post(self, request, **kwargs):
+        pk = kwargs.get('pk')
+        article = Article.objects.get(pk=pk)
+        comment = Comment()
+        comment.text = request.POST.get('text')
+        comment.author = request.POST.get('author')
+        comment.article = article
+        comment.save()
+        return redirect('article_details_url', pk)

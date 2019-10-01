@@ -11,9 +11,11 @@
         <hr>
         <p>{{ object.updated_at }}</p>
     </div>
-
-    <form action="{% url 'comment_create_url' %}"
-
+    <div class="container card-1 mt-3">
+    <form action="{% url 'comment_create_url'%}{{ object.pk }}/" method="post">
+        {% include 'partial/form_comment.html' %}
+    </form>
+</div>
     {% if comments %}
 
         <div class="container mt-3">
